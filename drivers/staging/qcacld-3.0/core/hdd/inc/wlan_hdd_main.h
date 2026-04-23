@@ -92,6 +92,9 @@
 #include "wlan_hdd_oemdata.h"
 #endif
 #include "wlan_hdd_he.h"
+#ifdef FEATURE_FRAME_INJECTION_SUPPORT
+#include "wlan_hdd_frame_inject.h"
+#endif
 
 #include <net/neighbour.h>
 #include <net/netevent.h>
@@ -1546,6 +1549,10 @@ struct hdd_adapter {
 	bool oem_data_in_progress;
 	void *cookie;
 	bool response_expected;
+#endif
+#ifdef FEATURE_FRAME_INJECTION_SUPPORT
+	struct hdd_injection_ctx *injection_ctx;
+	uint32_t mon_chan_freq;
 #endif
 };
 
